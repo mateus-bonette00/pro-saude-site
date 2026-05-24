@@ -1,0 +1,333 @@
+# =============================================================================
+# pro-saude-site — .gitignore
+# Next.js 16 + React 19 + TypeScript (static export)
+# =============================================================================
+
+
+# =============================================================================
+# Dependências
+# =============================================================================
+node_modules/
+jspm_packages/
+bower_components/
+vendor/
+
+# Lockfiles alternativos (mantém package-lock.json versionado)
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+.pnpm-store/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+
+# =============================================================================
+# Next.js — build, cache e export estático
+# =============================================================================
+.next/
+out/
+build/
+dist/
+.vercel/
+.netlify/
+
+# Turbopack / cache interno do Next
+.turbo/
+next-dev.log
+
+# Arquivos gerados pelo Next (mantém next-env.d.ts versionado)
+*.tsbuildinfo
+
+
+# =============================================================================
+# Variáveis de ambiente e segredos
+# Nunca subir chaves, tokens ou senhas para o GitHub
+# =============================================================================
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Certificados e credenciais
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+secrets/
+secret.*
+credentials.*
+*.credentials.json
+firebase-service-account*.json
+service-account*.json
+google-credentials*.json
+.aws/
+.gcp/
+.azure/
+
+
+# =============================================================================
+# Logs e debug
+# =============================================================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+debug.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+
+# =============================================================================
+# Testes e cobertura
+# =============================================================================
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+playwright-report/
+playwright/.cache/
+blob-report/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+__snapshots__/
+*.snap
+
+
+# =============================================================================
+# Lint, format e typecheck
+# =============================================================================
+.eslintcache
+.stylelintcache
+.prettiercache
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.tox/
+.hypothesis/
+
+
+# =============================================================================
+# Bundlers e ferramentas de build (caso adicione depois)
+# =============================================================================
+.cache/
+.parcel-cache/
+.svelte-kit/
+.nuxt/
+.angular/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+webpack-stats.json
+storybook-static/
+
+
+# =============================================================================
+# IDE e editores
+# =============================================================================
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# VS Code — ignora pessoal, mantém config útil da equipe
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Cursor / Windsurf / Zed
+.cursor/
+!.cursor/rules/
+!.cursor/rules/**
+.windsurf/
+.zed/
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+
+# =============================================================================
+# Sistema operacional
+# =============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+
+# =============================================================================
+# Docker e infraestrutura local
+# =============================================================================
+docker-data/
+.docker/
+tmp/
+temp/
+*.pid
+*.seed
+*.pid.lock
+
+
+# =============================================================================
+# Banco de dados local (caso use no futuro)
+# =============================================================================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sql
+*.dump
+*.bak
+prisma/*.db
+prisma/*.db-journal
+
+
+# =============================================================================
+# Uploads, mídia pesada e arquivos temporários
+# =============================================================================
+uploads/
+storage/
+media/
+public/uploads/
+public/storage/
+assets/uploads/
+
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.tgz
+*.iso
+
+
+# =============================================================================
+# Dados internos da loja (planilhas grandes — não versionar no GitHub)
+# Exemplo: TODOS PRODUTOS LOJA.xlsx
+# =============================================================================
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.jsonl
+/data/
+/datasets/
+*.parquet
+*.feather
+
+
+# =============================================================================
+# Documentos pesados (descomente exceções se precisar versionar algum)
+# =============================================================================
+# *.pdf
+# *.doc
+# *.docx
+# *.ppt
+# *.pptx
+
+
+# =============================================================================
+# Deploy, CI e artefatos locais
+# =============================================================================
+.vercel
+.netlify
+.firebase/
+.firebaserc.local
+.serverless/
+.now/
+*.local.yml
+*.local.yaml
+
+# Saída de build empacotado
+*.tgz
+*.tar.gz
+
+
+# =============================================================================
+# Misc / segurança extra
+# =============================================================================
+*.orig
+*.rej
+*.bak
+*.tmp
+*.temp
+.npm
+.node_repl_history
+.yarn-integrity
+.grunt
+.lock-wscript
+.wafpickle-*
+.envrc
+.direnv/
+.tool-versions.local
+
+# Arquivos de backup do editor
+*~
+*.swp
+*.swo
+
+# Sentry / monitoramento local
+.sentryclirc
+
+# Lighthouse / performance reports locais
+lighthouse-report.*
+.lighthouseci/

@@ -1,0 +1,281 @@
+# =========================================================
+
+# .geminiignore
+
+# Objetivo: reduzir contexto/tokens no Gemini/Antigravity
+
+# Mantém o foco no código-fonte e ignora arquivos pesados,
+
+# gerados, temporários, privados ou pouco úteis para análise.
+
+# =========================================================
+
+# =========================================================
+
+# Dependências
+
+# =========================================================
+
+node_modules/
+.pnpm-store/
+.yarn/
+.yarn/cache/
+bower_components/
+vendor/
+
+# =========================================================
+
+# Builds, bundles e arquivos gerados
+
+# =========================================================
+
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.angular/
+.vercel/
+.netlify/
+.turbo/
+.cache/
+.parcel-cache/
+vite.config.ts.timestamp-_
+vite.config.js.timestamp-_
+
+# =========================================================
+
+# Cache de frameworks e ferramentas
+
+# =========================================================
+
+.eslintcache
+.stylelintcache
+.nyc*output/
+coverage/
+coverage-final.json
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+**pycache**/
+*.pyc
+\_.pyo
+\*.pyd
+
+# =========================================================
+
+# Logs
+
+# =========================================================
+
+logs/
+_.log
+npm-debug.log_
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log\*
+debug.log
+
+# =========================================================
+
+# Variáveis de ambiente e segredos
+
+# Nunca deixe IA ler chaves, tokens, senhas ou credenciais.
+
+# =========================================================
+
+.env
+.env._
+!.env.example
+!.env.sample
+_.pem
+_.key
+_.crt
+_.p12
+_.pfx
+secrets._
+secret._
+credentials._
+firebase-service-account_.json
+service-account*.json
+google-credentials*.json
+
+# =========================================================
+
+# Banco de dados local
+
+# =========================================================
+
+_.sqlite
+_.sqlite3
+_.db
+_.db-journal
+_.dump
+_.sql
+\*.bak
+
+# =========================================================
+
+# Uploads, arquivos de usuário e mídias pesadas
+
+# =========================================================
+
+uploads/
+storage/
+media/
+public/uploads/
+public/storage/
+assets/uploads/
+_.mp4
+_.mov
+_.avi
+_.mkv
+_.webm
+_.mp3
+_.wav
+_.flac
+_.zip
+_.rar
+_.7z
+_.tar
+_.gz
+_.iso
+
+# =========================================================
+
+# Imagens pesadas
+
+# Mantém SVG porque geralmente é código útil.
+
+# =========================================================
+
+_.png
+_.jpg
+_.jpeg
+_.gif
+_.webp
+_.avif
+_.ico
+!_.svg
+
+# =========================================================
+
+# PDFs e documentos pesados
+
+# Remova estas linhas se o projeto precisar que a IA leia docs.
+
+# =========================================================
+
+_.pdf
+_.doc
+_.docx
+_.xls
+_.xlsx
+_.ppt
+\*.pptx
+
+# =========================================================
+
+# Lockfiles
+
+# Ignorar economiza tokens.
+
+# Remova da lista se a tarefa envolver dependências, bugs de install
+
+# ou atualização de pacotes.
+
+# =========================================================
+
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lockb
+
+# =========================================================
+
+# IDE, sistema operacional e arquivos locais
+
+# =========================================================
+
+.vscode/
+.idea/
+_.swp
+_.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================================
+
+# Git e metadados
+
+# =========================================================
+
+.git/
+.gitignore
+.gitattributes
+
+# =========================================================
+
+# Docker e infraestrutura gerada
+
+# =========================================================
+
+.docker/
+docker-data/
+tmp/
+temp/
+
+# =========================================================
+
+# Testes gerados, snapshots e relatórios
+
+# =========================================================
+
+test-results/
+playwright-report/
+cypress/videos/
+cypress/screenshots/
+\*.snap
+
+# =========================================================
+
+# Arquivos grandes de dados
+
+# =========================================================
+
+data/
+datasets/
+_.csv
+_.tsv
+_.jsonl
+_.parquet
+_.feather
+_.h5
+\*.hdf5
+
+# =========================================================
+
+# Exceções úteis
+
+# =========================================================
+
+!README.md
+!docs/
+!docs/\*_/_.md
+!src/
+!app/
+!pages/
+!components/
+!lib/
+!utils/
+!services/
+!package.json
+!tsconfig.json
+!vite.config._
+!next.config._
+!angular.json
+!GEMINI.md
+!AGENTS.md

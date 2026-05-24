@@ -1,0 +1,20 @@
+export const siteConfig = {
+  businessName: "Pró-Saúde Itajubá",
+  city: "Itajubá",
+  state: "MG",
+  country: "BR",
+  whatsapp: "5535988639024",
+  whatsappDisplay: "(35) 98863-9024",
+  phone: "(35) 3623-5033",
+  phoneSchema: "+55 35 3623-5033",
+  email: "prosaudeitajuba@gmail.com",
+  cnpj: "01.527.862/0001-30",
+  address: "R. Miguel Viana, 234 - Morro Chic, Itajubá - MG, 37500-080",
+  mapsUrl: "https://maps.app.goo.gl/5nmjo7VbnqSFhyX97",
+  siteUrl: "https://www.prosaudeitajuba.com.br",
+  openingHours: "Segunda a sexta, 07:00 às 18:00; sábado, 08:00 às 12:00; domingo, fechado",
+  logoWide: "/images/LOGO.png",
+  logoIcon: "/images/LOGO3.png",
+  description:
+    "Loja de produtos médicos, ortopédicos, hospitalares, mobilidade, cuidados domiciliares, curativos e materiais de saúde em Itajubá-MG.",
+}

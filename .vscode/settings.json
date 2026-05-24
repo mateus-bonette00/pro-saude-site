@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    ".geminiignore": "plaintext",
+    ".aiexclude": "plaintext"
+  },
+  "markdownlint.ignore": [".geminiignore"]
+}

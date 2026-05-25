@@ -1,10 +1,18 @@
 import type { Metadata } from "next"
+import { Montserrat } from "next/font/google"
 import "./globals.css"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { SeoJsonLd } from "@/components/seo-json-ld"
 import { siteConfig } from "@/data/site"
 import { localBusinessJsonLd } from "@/lib/seo"
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+  variable: "--font-montserrat",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -21,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={montserrat.variable}>
       <body>
         <SeoJsonLd data={localBusinessJsonLd()} />
         <Header />

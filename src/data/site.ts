@@ -13,7 +13,8 @@ export const siteConfig = {
   mapsUrl: "https://maps.app.goo.gl/5nmjo7VbnqSFhyX97",
   siteUrl: "https://www.prosaudeitajuba.com.br",
   openingHours: "Segunda a sexta, 07:00 às 18:00; sábado, 08:00 às 12:00; domingo, fechado",
-  logoWide: "/images/LOGO.png",
+  logoWide: "/images/LOGO4.png",
+  logoHero: "/images/logo-pro-saude-4k.png",
   logoIcon: "/images/LOGO3.png",
   description:
     "Loja de produtos médicos, ortopédicos, hospitalares, mobilidade, cuidados domiciliares, curativos e materiais de saúde em Itajubá-MG.",

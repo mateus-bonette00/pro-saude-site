@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, CheckCircle2, MapPin } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, MapPin } from "lucide-react"
 import { CallToAction } from "@/components/call-to-action"
 import { CategoryCard } from "@/components/category-card"
 import { LocationBlock } from "@/components/location-block"
@@ -11,7 +11,6 @@ import { SeoJsonLd } from "@/components/seo-json-ld"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { categories } from "@/data/categories"
 import { productPages } from "@/data/products"
-import { siteConfig } from "@/data/site"
 import { metadataForPage, breadcrumbJsonLd } from "@/lib/seo"
 
 export const metadata: Metadata = metadataForPage({
@@ -51,48 +50,108 @@ export default function Home() {
       <SeoJsonLd data={breadcrumbJsonLd([{ name: "Início", href: "/" }])} />
 
       <section className="hero">
-        <div className="container hero__grid">
-          <div className="hero__content">
-            <span className="eyebrow">Pró-Saúde Itajubá</span>
-            <h1>Produtos médicos, ortopédicos e hospitalares em Itajubá</h1>
-            <p>
-              A Pró-Saúde Itajubá oferece produtos para saúde, mobilidade, cuidados
-              domiciliares, curativos, aparelhos, materiais médicos e atendimento para
-              clientes, cuidadores, clínicas e profissionais da região.
-            </p>
-            <div className="hero__actions">
-              <WhatsAppButton
-                label="Consultar pelo WhatsApp"
-                message="Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de atendimento."
-              />
-              <Link className="button button--ghost" href="/produtos">
-                Ver produtos <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-            </div>
-            <ul className="hero__checks">
-              <li>
-                <CheckCircle2 size={17} aria-hidden="true" />
-                Loja física em Itajubá-MG
-              </li>
-              <li>
-                <CheckCircle2 size={17} aria-hidden="true" />
-                Catálogo enxuto por categoria
-              </li>
-              <li>
-                <CheckCircle2 size={17} aria-hidden="true" />
-                Consulta rápida pelo WhatsApp
-              </li>
-            </ul>
+        <div className="hero__shapes" aria-hidden="true">
+          <div className="hero__shape hero__shape--1" />
+          <div className="hero__shape hero__shape--2" />
+          <div className="hero__shape hero__shape--3" />
+          <div className="hero__shape hero__shape--4" />
+          <div className="hero__shape hero__shape--5" />
+          <div className="hero__shape hero__shape--6" />
+          <div className="hero__shape hero__shape--7" />
+          <div className="hero__shape hero__shape--8" />
+          <div className="hero__shape hero__shape--9" />
+          <div className="hero__shape hero__shape--10" />
+        </div>
+
+        <div className="container hero__center">
+          <h1 className="hero__title">
+            Produtos <mark>Médicos, Ortopédicos e Hospitalares</mark> em{" "}
+            <mark className="accent">Itajubá - MG</mark>
+          </h1>
+
+          <p className="hero__sub">
+            A Pró-Saúde Itajubá é uma loja física com produtos para saúde, mobilidade,
+            cuidados domiciliares, curativos, aparelhos e materiais médicos. Atendemos
+            clientes, famílias, cuidadores, clínicas e profissionais da região de
+            Itajubá e do Sul de Minas.
+          </p>
+
+          <div className="hero__actions">
+            <WhatsAppButton
+              label="Falar pelo WhatsApp"
+              message="Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de atendimento."
+            />
+            <Link className="button button--ghost" href="/produtos">
+              Ver produtos <ArrowRight size={18} aria-hidden="true" />
+            </Link>
           </div>
 
-          <div className="hero__media" aria-label="Logo da Pró-Saúde Itajubá">
+          <div className="hero__stats">
+            <div className="hero__stat">
+              <span className="hero__stat-num">30+</span>
+              <span className="hero__stat-label">
+                Anos de
+                <br />
+                Existência
+              </span>
+            </div>
+            <div className="hero__stat">
+              <span className="hero__stat-num">100%</span>
+              <span className="hero__stat-label">
+                Clientes
+                <br />
+                Satisfeitos
+              </span>
+            </div>
+            <div className="hero__stat">
+              <span className="hero__stat-num">3000+</span>
+              <span className="hero__stat-label">Produtos Disponíveis</span>
+            </div>
+          </div>
+
+          <div className="hero__scroll">
+            <div className="hero__scroll-line" />
+            Role para descobrir
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" className="section about-section">
+        <div className="container about-panel">
+          <div className="about-text">
+            <span className="eyebrow">Sobre nós</span>
+            <h2>Mais de 30 anos cuidando da saúde de Itajubá</h2>
+            <p>
+              A Pró-Saúde Itajubá é uma loja de produtos médicos, ortopédicos e hospitalares
+              em Itajubá-MG, com mais de três décadas atendendo pacientes em recuperação,
+              idosos, cuidadores, famílias e profissionais da saúde da região.
+            </p>
+            <p>
+              Aqui você encontra os produtos que mais saem: cadeira de rodas, andador,
+              bengala, muleta, cama hospitalar, colchão anti-escaras, fraldas geriátricas,
+              meia de compressão, aparelho de pressão, oxímetro, cinta lombar, bota
+              imobilizadora, curativos, gazes e ataduras — tudo em um só lugar, com
+              orientação especializada na hora da compra.
+            </p>
+            <p>
+              Somos uma loja física especializada no centro de Itajubá, com atendimento
+              humano e personalizado. Nosso time está pronto para te ajudar a encontrar o
+              produto certo, seja para uso domiciliar, pós-cirúrgico ou profissional.
+            </p>
+            <ul className="about-checks">
+              <li>Atendimento presencial e pelo WhatsApp</li>
+              <li>Mais de 3.000 produtos disponíveis</li>
+              <li>Equipe especializada para orientar sua compra</li>
+              <li>Entrega e suporte para toda a região Sul de Minas</li>
+            </ul>
+          </div>
+          <div className="about-logo-wrap">
             <Image
-              src={siteConfig.logoWide}
-              alt={siteConfig.businessName}
-              width={555}
-              height={121}
-              className="hero__logo"
-              priority
+              src="/images/logo-pro-saude-4k.png"
+              alt="Logo Pró-Saúde Itajubá"
+              width={420}
+              height={420}
+              className="about-logo-img"
             />
           </div>
         </div>

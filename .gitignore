@@ -1,11 +1,11 @@
 # =============================================================================
 # pro-saude-site — .gitignore
-# Next.js 16 + React 19 + TypeScript (static export)
+# Next.js 16 + React 19 + TypeScript (export estático)
 # =============================================================================
 
 
 # =============================================================================
-# Dependências
+# Dependências Node
 # =============================================================================
 node_modules/
 jspm_packages/
@@ -38,25 +38,21 @@ dist/
 .vercel/
 .netlify/
 
-# Turbopack / cache interno do Next
 .turbo/
 next-dev.log
-
-# Arquivos gerados pelo Next (mantém next-env.d.ts versionado)
 *.tsbuildinfo
 
 
 # =============================================================================
 # Variáveis de ambiente e segredos
-# Nunca subir chaves, tokens ou senhas para o GitHub
 # =============================================================================
 .env
 .env.*
 !.env.example
 !.env.sample
 !.env.template
+!.env.local.example
 
-# Certificados e credenciais
 *.pem
 *.key
 *.crt
@@ -90,7 +86,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 
 # =============================================================================
-# Testes e cobertura
+# Testes, E2E e cobertura
 # =============================================================================
 coverage/
 .nyc_output/
@@ -99,11 +95,13 @@ test-results/
 playwright-report/
 playwright/.cache/
 blob-report/
+.playwright-mcp/
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
 __snapshots__/
 *.snap
+.jest/
 
 
 # =============================================================================
@@ -112,15 +110,36 @@ __snapshots__/
 .eslintcache
 .stylelintcache
 .prettiercache
-.ruff_cache/
-.mypy_cache/
-.pytest_cache/
-.tox/
-.hypothesis/
 
 
 # =============================================================================
-# Bundlers e ferramentas de build (caso adicione depois)
+# Python (scripts de skills SEO instaladas localmente)
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.hypothesis/
+*.egg-info/
+.eggs/
+dist-python/
+pip-log.txt
+pip-delete-this-directory.txt
+.ipynb_checkpoints/
+*.pyc
+
+
+# =============================================================================
+# Bundlers e ferramentas de build
 # =============================================================================
 .cache/
 .parcel-cache/
@@ -131,6 +150,8 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 webpack-stats.json
 storybook-static/
+.open-next/
+.serverless/
 
 
 # =============================================================================
@@ -153,10 +174,12 @@ storybook-static/
 !.vscode/tasks.json
 !.vscode/launch.json
 
-# Cursor / Windsurf / Zed
-.cursor/
+# Cursor — mantém rules do projeto; ignora cache e skills instaladas
+.cursor/*
 !.cursor/rules/
 !.cursor/rules/**
+
+# Windsurf / Zed / outros
 .windsurf/
 .zed/
 
@@ -171,6 +194,24 @@ storybook-static/
 auto-save-list
 tramp
 .\#*
+
+
+# =============================================================================
+# Assistentes de IA — skills instaladas (install.sh / npx skills)
+# Não versionar cópias locais; o site não depende delas para rodar
+# =============================================================================
+.agent/
+.claude/
+.cline/
+.continue/
+.github/skills/
+.cursor/skills/
+.windsurf/skills/
+
+# Config local de ferramentas de IA (não é código do site)
+.clinerules
+install.sh
+seo-geo-optimizer.md
 
 
 # =============================================================================
@@ -200,7 +241,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # Linux
-*~
 .fuse_hidden*
 .directory
 .Trash-*
@@ -226,15 +266,13 @@ temp/
 *.sqlite3
 *.db
 *.db-journal
-*.sql
-*.dump
-*.bak
+/prisma/migrations/**/migration.sql
 prisma/*.db
 prisma/*.db-journal
 
 
 # =============================================================================
-# Uploads, mídia pesada e arquivos temporários
+# Uploads e mídia pesada (não confundir com public/images do site)
 # =============================================================================
 uploads/
 storage/
@@ -261,8 +299,26 @@ assets/uploads/
 
 
 # =============================================================================
-# Dados internos da loja (planilhas grandes — não versionar no GitHub)
-# Exemplo: TODOS PRODUTOS LOJA.xlsx
+# Rascunhos de design na raiz (screenshots de iteração com IA)
+# Manter assets finais em public/images/ — esses SIM entram no Git
+# =============================================================================
+/hero-*.png
+/hero-*.jpg
+/hero-*.webp
+/navbar-*.png
+/navbar-*.jpg
+/navbar-*.webp
+/*-result.png
+/*-result.jpg
+/*-result2.png
+/*-final.png
+/screenshot-*.png
+/design-*.png
+
+
+# =============================================================================
+# Dados internos da loja (planilhas grandes — não versionar)
+# Ex.: TODOS PRODUTOS LOJA.xlsx
 # =============================================================================
 *.xlsx
 *.xls
@@ -276,34 +332,33 @@ assets/uploads/
 
 
 # =============================================================================
-# Documentos pesados (descomente exceções se precisar versionar algum)
+# Relatórios SEO / performance gerados localmente
 # =============================================================================
-# *.pdf
-# *.doc
-# *.docx
-# *.ppt
-# *.pptx
+lighthouse-report.*
+.lighthouseci/
+seo-report/
+seo-reports/
+.audit/
+audit-output/
+*.audit.html
+*.audit.json
 
 
 # =============================================================================
-# Deploy, CI e artefatos locais
+# Deploy e CI
 # =============================================================================
 .vercel
 .netlify
 .firebase/
 .firebaserc.local
-.serverless/
 .now/
 *.local.yml
 *.local.yaml
-
-# Saída de build empacotado
 *.tgz
-*.tar.gz
 
 
 # =============================================================================
-# Misc / segurança extra
+# Misc
 # =============================================================================
 *.orig
 *.rej
@@ -319,15 +374,4 @@ assets/uploads/
 .envrc
 .direnv/
 .tool-versions.local
-
-# Arquivos de backup do editor
-*~
-*.swp
-*.swo
-
-# Sentry / monitoramento local
 .sentryclirc
-
-# Lighthouse / performance reports locais
-lighthouse-report.*
-.lighthouseci/

@@ -17,7 +17,7 @@ export function RelatedProducts({ slugs }: { slugs: string[] }) {
         </div>
         <div className="product-grid product-grid--compact">
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+            <ProductCard key={product.slug} product={product} variant="compact" />
           ))}
         </div>
       </div>

@@ -480,8 +480,8 @@ export const productPages: ProductPage[] = productSeeds.map((seed) => ({
   image: {
     src: `/images/products/${seed.slug}.webp`,
     alt: `${seed.name} disponível na Pró-Saúde Itajubá`,
-    width: 600,
-    height: 600,
+    width: 1200,
+    height: 1200,
   },
 }))
 

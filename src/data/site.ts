@@ -14,6 +14,7 @@ export const siteConfig = {
   instagramUrl: "https://www.instagram.com/prosaudeitajuba/",
   facebookUrl: "https://www.facebook.com/prosaudecirurgica",
   siteUrl: "https://www.prosaudeitajuba.com.br",
+  storeTimezone: "America/Sao_Paulo",
   openingHours: "Segunda a sexta, 07:00 às 18:00; sábado, 08:00 às 12:00; domingo, fechado",
   openingHoursSchedule: [
     { days: "Segunda a sexta", hours: "07:00 às 18:00" },

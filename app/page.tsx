@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, MapPin } from "lucide-react"
 import { AboutLogoShowcase } from "@/components/about-logo-showcase"
+import { HeroStoreStatus } from "@/components/hero-store-status"
 import { CallToAction } from "@/components/call-to-action"
 import { CategoryCard } from "@/components/category-card"
 import { ContactSection } from "@/components/contact-section"
@@ -65,6 +66,8 @@ export default function Home() {
         </div>
 
         <div className="container hero__center">
+          <HeroStoreStatus />
+
           <h1 className="hero__title">
             Produtos <mark>Médicos, Ortopédicos e Hospitalares</mark> em{" "}
             <mark className="accent">Itajubá - MG</mark>

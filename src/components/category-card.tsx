@@ -1,7 +1,8 @@
-import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import type { Category } from "@/data/categories"
+import { siteConfig } from "@/data/site"
+import { createItemInquiryMessage, createWhatsAppUrl } from "@/lib/whatsapp"
 
 export function CategoryCard({
   category,
@@ -10,8 +11,19 @@ export function CategoryCard({
   category: Category
   priority?: boolean
 }) {
+  const whatsappUrl = createWhatsAppUrl(
+    siteConfig.whatsapp,
+    createItemInquiryMessage(category.name),
+  )
+
   return (
-    <Link className="category-card" href={`/produtos/${category.slug}`}>
+    <a
+      className="category-card"
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Pedir ${category.name} no WhatsApp`}
+    >
       <span className="category-card__media" aria-hidden="true">
         <Image
           src={category.image.src}
@@ -29,12 +41,12 @@ export function CategoryCard({
         <h3>{category.name}</h3>
         <p>{category.shortDescription}</p>
         <span className="category-card__cta">
-          <span className="category-card__cta-text">Ver categoria</span>
+          <span className="category-card__cta-text">Pedir no WhatsApp</span>
           <span className="category-card__arrow" aria-hidden="true">
             <ArrowUpRight size={16} strokeWidth={2.25} />
           </span>
         </span>
       </span>
-    </Link>
+    </a>
   )
 }

@@ -1,7 +1,8 @@
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import type { ProductPage } from "@/data/products"
+import { siteConfig } from "@/data/site"
+import { createItemInquiryMessage, createWhatsAppUrl } from "@/lib/whatsapp"
 
 export function ProductCard({
   product,
@@ -10,9 +11,20 @@ export function ProductCard({
   product: ProductPage
   variant?: "featured" | "compact"
 }) {
+  const whatsappUrl = createWhatsAppUrl(
+    siteConfig.whatsapp,
+    createItemInquiryMessage(product.name),
+  )
+
   if (variant === "compact") {
     return (
-      <Link className="product-card product-card--compact" href={`/produtos/${product.slug}`}>
+      <a
+        className="product-card product-card--compact"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Pedir ${product.name} no WhatsApp`}
+      >
         <span className="product-card__media">
           <Image
             src={product.image.src}
@@ -24,13 +36,19 @@ export function ProductCard({
           />
         </span>
         <span className="product-card__name">{product.name}</span>
-        <ArrowRight size={16} aria-hidden="true" />
-      </Link>
+        <span className="product-card__cta-text">Pedir no WhatsApp</span>
+      </a>
     )
   }
 
   return (
-    <Link className="product-card" href={`/produtos/${product.slug}`}>
+    <a
+      className="product-card"
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Pedir ${product.name} no WhatsApp`}
+    >
       <span className="product-card__media" aria-hidden="true">
         <Image
           src={product.image.src}
@@ -46,12 +64,12 @@ export function ProductCard({
         <span className="product-card__glass-shine" aria-hidden="true" />
         <h3>{product.name}</h3>
         <span className="product-card__cta">
-          <span className="product-card__cta-text">Ver produto</span>
+          <span className="product-card__cta-text">Pedir no WhatsApp</span>
           <span className="product-card__arrow" aria-hidden="true">
             <ArrowUpRight size={15} strokeWidth={2.25} />
           </span>
         </span>
       </span>
-    </Link>
+    </a>
   )
 }

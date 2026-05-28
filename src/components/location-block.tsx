@@ -1,28 +1,64 @@
-import { Clock3, MapPin, Phone } from "lucide-react"
+import { Clock3, Mail, MapPin, Phone } from "lucide-react"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { siteConfig } from "@/data/site"
+import { createWhatsAppUrl } from "@/lib/whatsapp"
+
+const footerWhatsAppMessage =
+  "Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de atendimento."
 
 export function LocationBlock() {
+  const whatsappUrl = createWhatsAppUrl(siteConfig.whatsapp, footerWhatsAppMessage)
+
   return (
     <div className="location-block">
-      <div>
-        <MapPin size={20} aria-hidden="true" />
-        <span>Endereço</span>
-        <strong>{siteConfig.address}</strong>
-      </div>
-      <div>
-        <Phone size={20} aria-hidden="true" />
-        <span>Telefone fixo</span>
-        <strong>{siteConfig.phone}</strong>
-      </div>
-      <div>
-        <WhatsAppIcon size={20} className="location-block__whatsapp-icon" />
-        <span>Celular / WhatsApp</span>
-        <strong>{siteConfig.whatsappDisplay}</strong>
-      </div>
-      <div className="location-block__hours-card">
-        <Clock3 size={20} aria-hidden="true" />
-        <span>Horários de Funcionamento</span>
+      <article className="location-block__card">
+        <MapPin size={22} aria-hidden="true" />
+        <span className="location-block__label">Endereço</span>
+        <a
+          className="location-block__value"
+          href={siteConfig.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {siteConfig.address}
+        </a>
+      </article>
+
+      <article className="location-block__card">
+        <Phone size={22} aria-hidden="true" />
+        <span className="location-block__label">Telefone fixo</span>
+        <a
+          className="location-block__value"
+          href={`tel:${siteConfig.phoneSchema.replace(/\s/g, "")}`}
+        >
+          {siteConfig.phone}
+        </a>
+      </article>
+
+      <article className="location-block__card">
+        <WhatsAppIcon size={22} className="location-block__whatsapp-icon" aria-hidden="true" />
+        <span className="location-block__label">WhatsApp</span>
+        <a
+          className="location-block__value"
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {siteConfig.whatsappDisplay}
+        </a>
+      </article>
+
+      <article className="location-block__card">
+        <Mail size={22} aria-hidden="true" />
+        <span className="location-block__label">E-mail</span>
+        <a className="location-block__value" href={`mailto:${siteConfig.email}`}>
+          {siteConfig.email}
+        </a>
+      </article>
+
+      <article className="location-block__card location-block__card--hours">
+        <Clock3 size={22} aria-hidden="true" />
+        <span className="location-block__label">Horário de funcionamento</span>
         <ul className="location-hours">
           {siteConfig.openingHoursSchedule.map((item) => (
             <li key={item.days} className={item.closed ? "is-closed" : undefined}>
@@ -31,7 +67,7 @@ export function LocationBlock() {
             </li>
           ))}
         </ul>
-      </div>
+      </article>
     </div>
   )
 }

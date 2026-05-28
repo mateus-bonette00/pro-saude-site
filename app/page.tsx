@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, MapPin } from "lucide-react"
+import { AboutLogoShowcase } from "@/components/about-logo-showcase"
 import { CallToAction } from "@/components/call-to-action"
 import { CategoryCard } from "@/components/category-card"
+import { ContactSection } from "@/components/contact-section"
 import { LocationBlock } from "@/components/location-block"
 import { ProductCard } from "@/components/product-card"
 import { RegionServiceSection } from "@/components/region-service-section"
@@ -145,15 +146,7 @@ export default function Home() {
               <li>Suporte e atendimento para toda a região Sul de Minas</li>
             </ul>
           </div>
-          <div className="about-logo-wrap">
-            <Image
-              src="/images/logo-pro-saude-4k.png"
-              alt="Logo Pró-Saúde Itajubá"
-              width={420}
-              height={420}
-              className="about-logo-img"
-            />
-          </div>
+          <AboutLogoShowcase />
         </div>
       </section>
 
@@ -215,13 +208,13 @@ export default function Home() {
         message="Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de atendimento."
       />
 
-      <section className="section">
+      <section className="section location-section">
         <div className="container location-summary">
-          <div className="section-heading section-heading--compact">
+          <div className="section-heading">
             <span>Localização</span>
-            <h2>Localização resumida</h2>
+            <h2>Localização e Horário de Funcionamento</h2>
             <p>
-              Visite a loja ou fale antes pelo WhatsApp para consultar modelos e
+              Visite a loja em Itajubá ou fale antes pelo WhatsApp para consultar modelos e
               disponibilidade.
             </p>
           </div>
@@ -231,6 +224,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <ContactSection />
     </main>
   )
 }

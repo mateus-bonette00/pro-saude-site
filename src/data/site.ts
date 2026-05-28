@@ -11,6 +11,8 @@ export const siteConfig = {
   cnpj: "01.527.862/0001-30",
   address: "R. Miguel Viana, 234 - Morro Chic, Itajubá - MG, 37500-080",
   mapsUrl: "https://maps.app.goo.gl/5nmjo7VbnqSFhyX97",
+  instagramUrl: "https://www.instagram.com/prosaudeitajuba/",
+  facebookUrl: "https://www.facebook.com/prosaudecirurgica",
   siteUrl: "https://www.prosaudeitajuba.com.br",
   openingHours: "Segunda a sexta, 07:00 às 18:00; sábado, 08:00 às 12:00; domingo, fechado",
   openingHoursSchedule: [

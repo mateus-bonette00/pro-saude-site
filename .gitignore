@@ -33,6 +33,7 @@ bun.lockb
 # =============================================================================
 .next/
 out/
+.deploy.env
 build/
 dist/
 .vercel/
@@ -299,9 +300,33 @@ assets/uploads/
 
 
 # =============================================================================
-# Rascunhos de design na raiz (screenshots de iteração com IA)
+# Imagens placeholder (geradas localmente — não versionar)
+# Rodar scripts/gen-placeholders.sh só na sua máquina, se precisar
+# =============================================================================
+public/images/categories/*.webp
+public/images/products/*.webp
+scripts/gen-placeholders.sh
+
+
+# =============================================================================
+# Deploy local / servidor (scripts e docs de infra — não versionar)
+# =============================================================================
+/deploy/
+deploy/.deploy.env
+
+
+# =============================================================================
+# Next.js — arquivo gerado automaticamente
+# =============================================================================
+next-env.d.ts
+
+
+# =============================================================================
+# Rascunhos de design e scripts na raiz (não versionar)
 # Manter assets finais em public/images/ — esses SIM entram no Git
 # =============================================================================
+/*.sh
+/*.png
 /hero-*.png
 /hero-*.jpg
 /hero-*.webp
@@ -375,3 +400,7 @@ audit-output/
 .direnv/
 .tool-versions.local
 .sentryclirc
+
+.aiexclude
+.geminiignore
+.clinerules

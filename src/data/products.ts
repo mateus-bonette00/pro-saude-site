@@ -1,5 +1,7 @@
 import { servedRegions } from "./regions"
 
+import type { CardImage } from "./categories"
+
 export type ProductFaq = {
   question: string
   answer: string
@@ -15,8 +17,11 @@ export type ProductPage = {
   intro: string
   relatedProductSlugs: string[]
   whatsappMessage: string
+  image: CardImage
   faqs: ProductFaq[]
 }
+
+type ProductSeed = Omit<ProductPage, "image">
 
 const regionAnswer = `Sim. A Pró-Saúde Itajubá atende clientes de Itajubá e região, incluindo ${servedRegions
   .slice(1)
@@ -77,7 +82,7 @@ const ortopedicos = [
 
 const curativos = ["gaze", "atadura", "esparadrapo"]
 
-export const productPages: ProductPage[] = [
+const productSeeds: ProductSeed[] = [
   {
     slug: "cadeira-de-rodas",
     name: "Cadeira de Rodas",
@@ -469,6 +474,16 @@ export const productPages: ProductPage[] = [
     faqs: productFaqs("Inalação e Oxigênio", "produtos para inalação e oxigênio"),
   },
 ]
+
+export const productPages: ProductPage[] = productSeeds.map((seed) => ({
+  ...seed,
+  image: {
+    src: `/images/products/${seed.slug}.webp`,
+    alt: `${seed.name} disponível na Pró-Saúde Itajubá`,
+    width: 600,
+    height: 600,
+  },
+}))
 
 export function getProductBySlug(slug: string) {
   return productPages.find((product) => product.slug === slug)

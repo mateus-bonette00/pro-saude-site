@@ -76,8 +76,12 @@ export default function ProdutosPage() {
             <h2>Categorias principais</h2>
           </div>
           <div className="category-grid">
-            {categories.map((category) => (
-              <CategoryCard key={category.slug} category={category} />
+            {categories.map((category, index) => (
+              <CategoryCard
+                key={category.slug}
+                category={category}
+                priority={index < 3}
+              />
             ))}
           </div>
         </div>

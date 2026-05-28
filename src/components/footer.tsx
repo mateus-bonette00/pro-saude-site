@@ -1,10 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Clock3, Mail, MessageCircle, MapPin, Phone } from "lucide-react"
+import { Clock3, Mail, MapPin, Phone } from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { categories } from "@/data/categories"
 import { productPages } from "@/data/products"
 import { servedRegions } from "@/data/regions"
 import { siteConfig } from "@/data/site"
+import { createWhatsAppUrl } from "@/lib/whatsapp"
 
 const footerProducts = [
   "cadeira-de-rodas",
@@ -15,6 +17,9 @@ const footerProducts = [
   "bota-imobilizadora",
   "meia-de-compressao",
 ]
+
+const footerWhatsAppMessage =
+  "Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de atendimento."
 
 export function Footer() {
   const categoryLinks = categories.filter((category) => category.featuredOnHome)
@@ -34,31 +39,63 @@ export function Footer() {
             className="footer-logo"
             priority
           />
-          <strong>{siteConfig.businessName}</strong>
-          <p>{siteConfig.description}</p>
+          <p className="footer-brand-text">
+            Produtos médicos, ortopédicos e hospitalares em Itajubá-MG.
+          </p>
+
           <ul className="footer-contact">
             <li>
               <MapPin size={16} aria-hidden="true" />
-              <span>{siteConfig.address}</span>
+              <div className="footer-contact__content">
+                <span className="footer-contact__label">Endereço</span>
+                <a href={siteConfig.mapsUrl} target="_blank" rel="noopener noreferrer">
+                  {siteConfig.address}
+                </a>
+              </div>
             </li>
             <li>
               <Phone size={16} aria-hidden="true" />
-              <span>{siteConfig.phone}</span>
+              <div className="footer-contact__content">
+                <span className="footer-contact__label">Telefone</span>
+                <a href={`tel:${siteConfig.phoneSchema.replace(/\s/g, "")}`}>{siteConfig.phone}</a>
+              </div>
             </li>
             <li>
-              <MessageCircle size={16} aria-hidden="true" />
-              <span>{siteConfig.whatsappDisplay}</span>
+              <WhatsAppIcon size={16} className="footer-contact__whatsapp-icon" />
+              <div className="footer-contact__content">
+                <span className="footer-contact__label">WhatsApp</span>
+                <a
+                  href={createWhatsAppUrl(siteConfig.whatsapp, footerWhatsAppMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {siteConfig.whatsappDisplay}
+                </a>
+              </div>
             </li>
             <li>
               <Mail size={16} aria-hidden="true" />
-              <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+              <div className="footer-contact__content">
+                <span className="footer-contact__label">E-mail</span>
+                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+              </div>
             </li>
-            <li>
+            <li className="footer-contact__hours">
               <Clock3 size={16} aria-hidden="true" />
-              <span>{siteConfig.openingHours}</span>
-            </li>
-            <li>
-              <span>CNPJ {siteConfig.cnpj}</span>
+              <div className="footer-contact__content">
+                <span className="footer-contact__label">Horários</span>
+                <dl className="footer-hours">
+                  {siteConfig.openingHoursSchedule.map((item) => (
+                    <div
+                      key={item.days}
+                      className={item.closed ? "footer-hours__row is-closed" : "footer-hours__row"}
+                    >
+                      <dt>{item.days}</dt>
+                      <dd>{item.hours}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
             </li>
           </ul>
         </section>
@@ -94,8 +131,12 @@ export function Footer() {
       </div>
 
       <div className="container footer-bottom">
-        <span>Atendimento em {servedRegions.join(", ")} e outras cidades da região.</span>
-        <span>Consulte disponibilidade antes de se deslocar até a loja.</span>
+        <p className="footer-bottom__regions">
+          Atendimento em {servedRegions.slice(0, 4).join(", ")} e outras cidades da região.
+        </p>
+        <p className="footer-bottom__legal">
+          CNPJ {siteConfig.cnpj} · Consulte disponibilidade antes de visitar a loja.
+        </p>
       </div>
     </footer>
   )

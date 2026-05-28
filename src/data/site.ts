@@ -13,6 +13,11 @@ export const siteConfig = {
   mapsUrl: "https://maps.app.goo.gl/5nmjo7VbnqSFhyX97",
   siteUrl: "https://www.prosaudeitajuba.com.br",
   openingHours: "Segunda a sexta, 07:00 às 18:00; sábado, 08:00 às 12:00; domingo, fechado",
+  openingHoursSchedule: [
+    { days: "Segunda a sexta", hours: "07:00 às 18:00" },
+    { days: "Sábado", hours: "08:00 às 12:00" },
+    { days: "Domingo", hours: "Fechado", closed: true },
+  ],
   logoWide: "/images/LOGO4.png",
   logoHero: "/images/logo-pro-saude-4k.png",
   logoIcon: "/images/LOGO3.png",

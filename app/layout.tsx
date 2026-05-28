@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google"
 import "./globals.css"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SeoJsonLd } from "@/components/seo-json-ld"
 import { siteConfig } from "@/data/site"
 import { localBusinessJsonLd } from "@/lib/seo"
@@ -35,6 +36,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         {children}
         <Footer />
+        <WhatsAppButton
+          variant="floating"
+          label="Falar pelo WhatsApp"
+          message="Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de atendimento."
+        />
       </body>
     </html>
   )

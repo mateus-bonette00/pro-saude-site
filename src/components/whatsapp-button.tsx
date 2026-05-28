@@ -1,11 +1,11 @@
-import { MessageCircle } from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { siteConfig } from "@/data/site"
 import { createWhatsAppUrl } from "@/lib/whatsapp"
 
 type WhatsAppButtonProps = {
   label?: string
   message: string
-  variant?: "primary" | "secondary" | "floating"
+  variant?: "primary" | "secondary" | "floating" | "glass"
 }
 
 export function WhatsAppButton({
@@ -13,6 +13,8 @@ export function WhatsAppButton({
   message,
   variant = "primary",
 }: WhatsAppButtonProps) {
+  const isFloating = variant === "floating"
+
   return (
     <a
       className={`whatsapp-button whatsapp-button--${variant}`}
@@ -21,8 +23,8 @@ export function WhatsAppButton({
       rel="noopener noreferrer"
       aria-label={label}
     >
-      <MessageCircle aria-hidden="true" size={18} strokeWidth={2.4} />
-      <span>{label}</span>
+      <WhatsAppIcon size={isFloating ? 28 : 18} className="whatsapp-button__icon" />
+      {!isFloating ? <span>{label}</span> : null}
     </a>
   )
 }

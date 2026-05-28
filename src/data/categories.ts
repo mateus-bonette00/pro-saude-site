@@ -3,6 +3,13 @@ export type RelatedItem = {
   slug?: string
 }
 
+export type CardImage = {
+  src: string
+  alt: string
+  width: number
+  height: number
+}
+
 export type Category = {
   slug: string
   name: string
@@ -13,10 +20,13 @@ export type Category = {
   shortDescription: string
   relatedItems: RelatedItem[]
   whatsappMessage: string
+  image: CardImage
   featuredOnHome?: boolean
 }
 
-export const categories: Category[] = [
+type CategorySeed = Omit<Category, "image">
+
+const categorySeeds: CategorySeed[] = [
   {
     slug: "mobilidade-e-acessibilidade",
     name: "Mobilidade e Acessibilidade",
@@ -285,6 +295,16 @@ export const categories: Category[] = [
       "Olá! Vim pelo site da Pró-Saúde Itajubá e gostaria de consultar produtos odontológicos.",
   },
 ]
+
+export const categories: Category[] = categorySeeds.map((seed) => ({
+  ...seed,
+  image: {
+    src: `/images/categories/${seed.slug}.webp`,
+    alt: `Categoria ${seed.name} na Pró-Saúde Itajubá`,
+    width: 800,
+    height: 500,
+  },
+}))
 
 export function getCategoryBySlug(slug: string) {
   return categories.find((category) => category.slug === slug)

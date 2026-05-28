@@ -130,7 +130,7 @@ export default function Home() {
               Aqui você encontra os produtos que mais saem: cadeira de rodas, andador,
               bengala, muleta, cama hospitalar, colchão anti-escaras, fraldas geriátricas,
               meia de compressão, aparelho de pressão, oxímetro, cinta lombar, bota
-              imobilizadora, curativos, gazes e ataduras — tudo em um só lugar, com
+              imobilizadora, curativos, gazes e ataduras, tudo em um só lugar, com
               orientação especializada na hora da compra.
             </p>
             <p>
@@ -164,8 +164,12 @@ export default function Home() {
             <h2>Categorias principais</h2>
           </div>
           <div className="category-grid">
-            {featuredCategories.map((category) => (
-              <CategoryCard key={category.slug} category={category} />
+            {featuredCategories.map((category, index) => (
+              <CategoryCard
+                key={category.slug}
+                category={category}
+                priority={index < 3}
+              />
             ))}
           </div>
         </div>

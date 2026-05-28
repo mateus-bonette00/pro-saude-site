@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import type { Category } from "@/data/categories"
 
 export function CategoryCard({
@@ -12,23 +12,27 @@ export function CategoryCard({
 }) {
   return (
     <Link className="category-card" href={`/produtos/${category.slug}`}>
-      <span className="category-card__media">
+      <span className="category-card__media" aria-hidden="true">
         <Image
           src={category.image.src}
           alt={category.image.alt}
           width={category.image.width}
           height={category.image.height}
-          sizes="(max-width: 720px) 100vw, (max-width: 920px) 50vw, 33vw"
+          sizes="(max-width: 720px) 100vw, (max-width: 920px) 50vw, 440px"
           priority={priority}
           loading={priority ? undefined : "lazy"}
         />
       </span>
-      <span className="category-card__body">
-        <span className="category-card__label">Categoria</span>
+
+      <span className="category-card__glass">
+        <span className="category-card__glass-shine" aria-hidden="true" />
         <h3>{category.name}</h3>
         <p>{category.shortDescription}</p>
-        <span className="card-link">
-          Ver categoria <ArrowRight size={16} aria-hidden="true" />
+        <span className="category-card__cta">
+          <span className="category-card__cta-text">Ver categoria</span>
+          <span className="category-card__arrow" aria-hidden="true">
+            <ArrowUpRight size={16} strokeWidth={2.25} />
+          </span>
         </span>
       </span>
     </Link>

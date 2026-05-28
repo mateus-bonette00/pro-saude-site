@@ -301,8 +301,8 @@ export const categories: Category[] = categorySeeds.map((seed) => ({
   image: {
     src: `/images/categories/${seed.slug}.webp`,
     alt: `Categoria ${seed.name} na Pró-Saúde Itajubá`,
-    width: 800,
-    height: 500,
+    width: 1200,
+    height: 1200,
   },
 }))
 

@@ -142,7 +142,7 @@ export default function Home() {
               <li>Atendimento presencial e pelo WhatsApp</li>
               <li>Mais de 3.000 produtos disponíveis</li>
               <li>Equipe especializada para orientar sua compra</li>
-              <li>Entrega e suporte para toda a região Sul de Minas</li>
+              <li>Suporte e atendimento para toda a região Sul de Minas</li>
             </ul>
           </div>
           <div className="about-logo-wrap">

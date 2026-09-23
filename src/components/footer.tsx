@@ -12,7 +12,7 @@ const footerWhatsAppMessage =
 
 const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/produtos", label: "Produtos" },
+  { href: "/#categorias", label: "Produtos" },
   { href: "/sobre", label: "Sobre" },
   { href: "/localizacao", label: "Localização" },
   { href: "/contato", label: "Contato" },

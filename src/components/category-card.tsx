@@ -30,7 +30,7 @@ export function CategoryCard({
           alt={category.image.alt}
           width={category.image.width}
           height={category.image.height}
-          sizes="(max-width: 720px) 100vw, (max-width: 920px) 50vw, 440px"
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
           priority={priority}
           loading={priority ? undefined : "lazy"}
         />

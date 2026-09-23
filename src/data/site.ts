@@ -24,6 +24,9 @@ export const siteConfig = {
   logoWide: "/images/LOGO4.png",
   logoHero: "/images/logo-pro-saude-4k.png",
   logoIcon: "/images/LOGO3.png",
+  logoShare: "/images/LOGO2.png",
+  logoShareWidth: 217,
+  logoShareHeight: 233,
   description:
     "Loja de produtos médicos, ortopédicos, hospitalares, mobilidade, cuidados domiciliares, curativos e materiais de saúde em Itajubá-MG.",
 }

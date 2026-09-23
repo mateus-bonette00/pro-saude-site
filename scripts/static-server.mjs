@@ -6,6 +6,11 @@ import { extname, join, normalize } from "node:path"
 const port = Number(process.argv[2] ?? 3000)
 const root = join(process.cwd(), "out")
 
+const legacyRedirects = new Map([
+  ["/produtos", "/#categorias"],
+  ["/produtos/", "/#categorias"],
+])
+
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
@@ -38,7 +43,37 @@ function resolveFile(url = "/") {
   return join(root, "404.html")
 }
 
+function cacheHeaders(filePath, requestUrl = "/") {
+  const rel = filePath.replace(root, "").replace(/\\/g, "/")
+  if (rel.includes("/_next/static/")) {
+    return { "cache-control": "public, max-age=31536000, immutable" }
+  }
+  if (/\.(png|jpe?g|gif|webp|svg|avif|ico)$/i.test(rel)) {
+    return { "cache-control": "public, max-age=604800" }
+  }
+  const pathname = decodeURIComponent((requestUrl.split("?")[0] ?? "/"))
+  const isHtml =
+    rel.endsWith(".html") || pathname === "/" || !extname(pathname)
+  if (isHtml) {
+    return {
+      "cache-control": "no-cache, no-store, must-revalidate",
+      pragma: "no-cache",
+      expires: "0",
+    }
+  }
+  return { "cache-control": "public, max-age=86400" }
+}
+
 const server = createServer(async (request, response) => {
+  const pathname = decodeURIComponent((request.url?.split("?")[0] ?? "/"))
+  const redirectTarget = legacyRedirects.get(pathname)
+
+  if (redirectTarget) {
+    response.writeHead(301, { Location: redirectTarget })
+    response.end()
+    return
+  }
+
   const filePath = resolveFile(request.url)
   const fileStat = await stat(filePath).catch(() => null)
 
@@ -51,6 +86,7 @@ const server = createServer(async (request, response) => {
   response.writeHead(filePath.endsWith("404.html") ? 404 : 200, {
     "content-length": fileStat.size,
     "content-type": contentTypes[extname(filePath)] ?? "application/octet-stream",
+    ...cacheHeaders(filePath, request.url),
   })
 
   createReadStream(filePath).pipe(response)

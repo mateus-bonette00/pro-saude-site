@@ -55,7 +55,7 @@ export function ProductCard({
           alt={product.image.alt}
           width={product.image.width}
           height={product.image.height}
-          sizes="(max-width: 720px) 45vw, (max-width: 920px) 50vw, 300px"
+          sizes="(max-width: 390px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
           loading="lazy"
         />
       </span>

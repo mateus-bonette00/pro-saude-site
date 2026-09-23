@@ -17,6 +17,18 @@ export function absoluteUrl(path = "/") {
   return `${siteConfig.siteUrl}${cleanPath === "/" ? "" : cleanPath}`
 }
 
+export function shareImageMetadata() {
+  return [
+    {
+      url: absoluteUrl(siteConfig.logoShare),
+      width: siteConfig.logoShareWidth,
+      height: siteConfig.logoShareHeight,
+      alt: siteConfig.businessName,
+      type: "image/png",
+    },
+  ]
+}
+
 export function metadataForPage({
   title,
   description,
@@ -39,14 +51,13 @@ export function metadataForPage({
       siteName: siteConfig.businessName,
       locale: "pt_BR",
       type: "website",
-      images: [
-        {
-          url: siteConfig.logoWide,
-          width: 555,
-          height: 121,
-          alt: siteConfig.businessName,
-        },
-      ],
+      images: shareImageMetadata(),
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      images: shareImageMetadata(),
     },
     robots: {
       index: true,

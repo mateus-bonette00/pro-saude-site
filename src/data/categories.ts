@@ -1,3 +1,5 @@
+import { versionedAsset } from "@/lib/versioned-asset"
+
 export type RelatedItem = {
   name: string
   slug?: string
@@ -299,7 +301,7 @@ const categorySeeds: CategorySeed[] = [
 export const categories: Category[] = categorySeeds.map((seed) => ({
   ...seed,
   image: {
-    src: `/images/categories/${seed.slug}.webp`,
+    src: versionedAsset(`/images/categories/${seed.slug}.webp`),
     alt: `Categoria ${seed.name} na Pró-Saúde Itajubá`,
     width: 1200,
     height: 1200,

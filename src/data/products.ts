@@ -1,3 +1,4 @@
+import { versionedAsset } from "@/lib/versioned-asset"
 import { servedRegions } from "./regions"
 
 import type { CardImage } from "./categories"
@@ -478,7 +479,7 @@ const productSeeds: ProductSeed[] = [
 export const productPages: ProductPage[] = productSeeds.map((seed) => ({
   ...seed,
   image: {
-    src: `/images/products/${seed.slug}.webp`,
+    src: versionedAsset(`/images/products/${seed.slug}.webp`),
     alt: `${seed.name} disponível na Pró-Saúde Itajubá`,
     width: 1200,
     height: 1200,

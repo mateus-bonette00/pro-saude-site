@@ -7,8 +7,8 @@ export default function NotFound() {
         <span className="eyebrow">Página não encontrada</span>
         <h1>Não encontramos esta página</h1>
         <p>Use o menu para voltar aos produtos ou falar com a Pró-Saúde Itajubá.</p>
-        <Link className="button button--primary" href="/produtos">
-          Ver produtos
+        <Link className="button button--primary" href="/#categorias">
+          Ver Produtos -&gt;
         </Link>
       </div>
     </main>

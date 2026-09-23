@@ -8,13 +8,15 @@ export function AboutLogoShowcase() {
         <span className="about-showcase__glow about-showcase__glow--coral" />
       </div>
 
-      <Image
-        src="/images/logo-pro-saude-4k.png"
-        alt="Logo Pró-Saúde Itajubá"
-        width={420}
-        height={420}
-        className="about-showcase__logo"
-      />
+      <div className="about-showcase__logo-frame">
+        <Image
+          src="/images/logo-pro-saude-4k.png"
+          alt="Logo Pró-Saúde Itajubá"
+          width={420}
+          height={420}
+          className="about-showcase__logo"
+        />
+      </div>
 
       <p className="about-showcase__caption">30+ anos em Itajubá</p>
     </div>

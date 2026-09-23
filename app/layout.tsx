@@ -6,7 +6,7 @@ import { Header } from "@/components/header"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SeoJsonLd } from "@/components/seo-json-ld"
 import { siteConfig } from "@/data/site"
-import { localBusinessJsonLd } from "@/lib/seo"
+import { localBusinessJsonLd, shareImageMetadata } from "@/lib/seo"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -26,11 +26,23 @@ export const metadata: Metadata = {
     icon: siteConfig.logoIcon,
     apple: siteConfig.logoIcon,
   },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: siteConfig.businessName,
+    images: shareImageMetadata(),
+  },
+  twitter: {
+    card: "summary",
+    images: shareImageMetadata(),
+  },
 }
+
+const buildStamp = process.env.NEXT_PUBLIC_BUILD_STAMP ?? "1"
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={montserrat.variable}>
+    <html lang="pt-BR" className={montserrat.variable} data-build={buildStamp}>
       <body>
         <SeoJsonLd data={localBusinessJsonLd()} />
         <Header />

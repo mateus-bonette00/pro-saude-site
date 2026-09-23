@@ -65,8 +65,8 @@ export default function SobrePage() {
 
       <section className="section">
         <div className="container quick-links">
-          <Link href="/produtos">
-            Ver produtos <ArrowRight size={16} aria-hidden="true" />
+          <Link href="/#categorias">
+            Ver Produtos -&gt;
           </Link>
           <Link href="/localizacao">
             Ver localização <ArrowRight size={16} aria-hidden="true" />

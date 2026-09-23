@@ -9,7 +9,7 @@ import { siteConfig } from "@/data/site"
 
 const leftItems = [
   { href: "/", label: "Início" },
-  { href: "/produtos", label: "Produtos" },
+  { href: "/#categorias", label: "Produtos" },
   { href: "/#sobre", label: "Sobre" },
 ]
 
